@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TruBalance Project Documentation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 50px;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #16a085;
+            margin-top: 25px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin: 20px 0;
+            display: block;
+        }
+        code, pre {
+            background-color: #f8f9fa;
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            padding: 15px;
+            overflow-x: auto;
+            border: 1px solid #e1e4e8;
+        }
+        ul {
+            margin-bottom: 20px;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        .page-break {
+            page-break-before: always;
+        }
+        .banner {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="banner">
+        <h1 style="border: none; font-size: 3em; color: #4a69bd;">TruBalance</h1>
+        <p style="font-size: 1.5em; color: #666;">Smart Expense Tracker & Invoicing App</p>
+        <p><strong>Project Documentation & Walkthrough</strong></p>
+    </div>
+
+    <h1>1. Overview</h1>
+    <p><strong>TruBalance</strong> is a comprehensive financial management tool designed for freelancers and small businesses. It combines powerful expense tracking, professional invoicing, and AI-driven insights into a single, intuitive interface.</p>
+    <p>Built with the MERN stack (MongoDB, Express, React, Node.js), TruBalance ensures your financial data is secure, accessible, and actionable.</p>
+
+    <h2>Key Capabilities</h2>
+    <ul>
+        <li><strong>Smart Invoicing:</strong> Create, send, and track GST-compliant invoices.</li>
+        <li><strong>Expense Tracking:</strong> Log and categorize expenses effortlessly.</li>
+        <li><strong>AI Insights:</strong> Get personalized budget recommendations and spending analysis.</li>
+        <li><strong>Client Management:</strong> Maintain a detailed database of your clients.</li>
+        <li><strong>Financial Health:</strong> Visualize your income, expenses, and net balance in real-time.</li>
+    </ul>
+
+    <div class="page-break"></div>
+
+    <h1>2. Features & Walkthrough</h1>
+
+    <h3>1. Landing Page</h3>
+    <p>Clean and modern landing page introducing the application's value proposition.</p>
+    <img src="./landing_page_screenshot.png" alt="Landing Page">
+
+    <h3>2. Secure Authentication</h3>
+    <p>Secure user registration and login system to protect your financial data.</p>
+    <img src="./login_screenshot.png" alt="Login Page">
+
+    <div class="page-break"></div>
+
+    <h3>3. Dashboard</h3>
+    <p>Your financial command center. View real-time stats on total income, expenses, and balance. Quick access buttons allow you to immediately log an expense or create an invoice.</p>
+    <img src="./dashboard_screenshot.png" alt="Dashboard">
+
+    <div class="page-break"></div>
+
+    <h3>4. Invoice Management</h3>
+    <p>Create professional invoices with automatic GST calculation.</p>
+    <ul>
+        <li><strong>Create:</strong> Easy-to-use form for adding clients, line items, and tax details.</li>
+        <li><strong>Track:</strong> Monitor status (Draft, Sent, Paid, Overdue).</li>
+        <li><strong>Automated Income:</strong> Mark an invoice as "Paid" and it automatically records as Income.</li>
+    </ul>
+    <img src="./invoice_list_screenshot.png" alt="Invoice List">
+    <img src="./create_invoice_screenshot.png" alt="Create Invoice">
+
+    <div class="page-break"></div>
+
+    <h3>5. Client Management</h3>
+    <p>Keep all your client details in one place for quick invoicing. Store GSTIN, contact details, and addresses.</p>
+    <img src="./clients_screenshot.png" alt="Client List">
+
+    <h3>6. Income Tracking</h3>
+    <p>Visualize your earnings with clear charts and transaction history.</p>
+    <img src="./income_screenshot.png" alt="Income Page">
+
+    <div class="page-break"></div>
+
+    <h3>7. Expense Tracking</h3>
+    <p>Log and categorize expenses to see exactly where your money goes.</p>
+    <img src="./expenses_screenshot.png" alt="Expenses Page">
+
+    <h3>8. Smart Budgeting</h3>
+    <p>Set limits for categories like Food or Shopping and get alerts when you're close to overspending.</p>
+    <img src="./budget_screenshot.png" alt="Budget Page">
+
+    <h3>9. AI Insights</h3>
+    <p>Get personalized financial advice and monthly reports powered by AI.</p>
+    <img src="./insights_screenshot.png" alt="AI Insights">
+
+    <div class="page-break"></div>
+
+    <h1>3. Technology Stack</h1>
+    <ul>
+        <li><strong>Frontend:</strong> React, Vite, Tailwind CSS, Recharts</li>
+        <li><strong>Backend:</strong> Node.js, Express.js</li>
+        <li><strong>Database:</strong> MongoDB</li>
+        <li><strong>Authentication:</strong> JWT (JSON Web Tokens)</li>
+        <li><strong>AI Integration:</strong> Google Gemini</li>
+    </ul>
+
+    <h1>4. Installation Guide</h1>
+    <p>Follow these steps to run TruBalance locally.</p>
+    
+    <h3>Prerequisites</h3>
+    <ul>
+        <li>Node.js (v14+)</li>
+        <li>MongoDB (Local or Atlas URI)</li>
+    </ul>
+
+    <h3>1. Clone the Repository</h3>
+    <pre><code>git clone https://github.com/yourusername/trubalance.git
+cd trubalance</code></pre>
+
+    <h3>2. Backend Setup</h3>
+    <pre><code>cd server
+npm install</code></pre>
+    <p>Create a <code>.env</code> file in the <code>server</code> folder with PORT, MONGO_URI, JWT_SECRET, and GEMINI_API_KEY.</p>
+    <pre><code>npm run dev</code></pre>
+
+    <h3>3. Frontend Setup</h3>
+    <pre><code>cd client
+npm install
+npm run dev</code></pre>
+
+</body>
+</html>

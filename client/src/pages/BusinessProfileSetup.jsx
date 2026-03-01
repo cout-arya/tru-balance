@@ -55,7 +55,7 @@ const BusinessProfileSetup = () => {
             try {
                 const token = localStorage.getItem('token');
                 const response = await axios.get(
-                    `${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/business-profile`,
+                    `${import.meta.env.VITE_API_URL || (import.meta.env.PROD ? '' : 'http://localhost:5001')}/api/business-profile`,
                     {
                         headers: { Authorization: `Bearer ${token}` }
                     }

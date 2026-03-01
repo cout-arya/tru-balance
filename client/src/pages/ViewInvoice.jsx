@@ -11,7 +11,7 @@ const ViewInvoice = () => {
     const [businessProfile, setBusinessProfile] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001';
+    const API_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? '' : 'http://localhost:5001');
 
     useEffect(() => {
         fetchInvoice();

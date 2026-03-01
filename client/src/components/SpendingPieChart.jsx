@@ -9,7 +9,7 @@ const SpendingPieChart = () => {
   const [chartData, setChartData] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:5001/api/stats/spending-summary', {
+    axios.get(`${import.meta.env.PROD ? '' : 'http://localhost:5001'}/api/stats/spending-summary`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
