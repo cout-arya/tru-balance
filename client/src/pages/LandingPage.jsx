@@ -1,7 +1,34 @@
-import { Link } from 'react-router-dom';
-import { FaChartLine, FaShieldAlt, FaBrain, FaArrowRight, FaCheckCircle, FaWallet, FaBolt } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
+import { FaChartLine, FaShieldAlt, FaBrain, FaArrowRight, FaCheckCircle, FaWallet, FaBolt, FaPlay } from 'react-icons/fa';
+import { useState } from 'react';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 function LandingPage() {
+    const navigate = useNavigate();
+    const [isDemoLoading, setIsDemoLoading] = useState(false);
+
+    const handleDemoLogin = async () => {
+        setIsDemoLoading(true);
+        try {
+            const res = await axios.post(`${import.meta.env.PROD ? '' : 'http://localhost:5001'}/api/auth/demo-login`);
+            
+            localStorage.setItem('token', res.data.token);
+            localStorage.setItem('user', JSON.stringify({
+                _id: res.data._id,
+                name: res.data.name,
+                email: res.data.email
+            }));
+
+            toast.success(`Welcome to the Demo, ${res.data.name}!`);
+            navigate('/dashboard');
+        } catch (err) {
+            toast.error(err.response?.data?.message || 'Demo login failed');
+        } finally {
+            setIsDemoLoading(false);
+        }
+    };
+
     return (
         <div className="min-h-screen bg-white">
             {/* Navigation */}
@@ -61,10 +88,25 @@ function LandingPage() {
                             Track expenses, manage budgets, and get AI-powered insights to make better financial decisions.
                         </p>
 
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
+                            <button
+                                onClick={handleDemoLogin}
+                                disabled={isDemoLoading}
+                                className="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold rounded-lg hover:from-purple-700 hover:to-indigo-700 transition-all shadow-[0_0_20px_rgba(79,70,229,0.3)] hover:shadow-[0_0_25px_rgba(79,70,229,0.5)] flex items-center justify-center gap-2 transform hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
+                            >
+                                {isDemoLoading ? (
+                                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                                ) : (
+                                    <FaPlay className="text-sm" />
+                                )}
+                                Try Live Demo
+                            </button>
+                        </div>
+                        
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
                             <Link
                                 to="/register"
-                                className="w-full sm:w-auto px-8 py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors flex items-center justify-center gap-2"
+                                className="w-full sm:w-auto px-8 py-3 bg-slate-900 text-white font-semibold rounded-lg hover:bg-slate-800 transition-colors flex items-center justify-center gap-2"
                             >
                                 Start Free Trial
                                 <FaArrowRight />

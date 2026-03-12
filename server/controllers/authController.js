@@ -46,3 +46,25 @@ export const loginUser = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+// Demo Login
+export const demoLogin = async (req, res) => {
+  try {
+    const DEMO_EMAIL = 'demo@trubalance.com';
+    const user = await User.findOne({ email: DEMO_EMAIL });
+    
+    if (!user) {
+      return res.status(404).json({ message: 'Demo account not found. Please run the seed script.' });
+    }
+
+    res.json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      token: generateToken(user._id),
+      isDemo: true
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
